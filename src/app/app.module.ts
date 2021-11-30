@@ -7,7 +7,11 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 import { LoginComponent } from './pages/login/login.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [AppComponent, TopbarComponent, LoginComponent],
@@ -16,6 +20,9 @@ import { LoginComponent } from './pages/login/login.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
