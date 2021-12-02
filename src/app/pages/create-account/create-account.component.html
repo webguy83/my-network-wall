@@ -1,12 +1,19 @@
 <div class="container">
   <div class="form-container">
-    <h2 class="title">Login</h2>
-    <form [formGroup]="loginForm">
+    <h2 class="title">Create Account</h2>
+    <form [formGroup]="createAccountForm">
       <mat-form-field appearance="outline">
         <mat-label>Enter your email</mat-label>
-        <input type="email" matInput formControlName="email" />
+        <input type="text" matInput formControlName="email" />
         <mat-error *ngIf="formHelpers.isFormControlInvalid('email')">
           {{ formHelpers.getErrorMessage("email") }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter your username</mat-label>
+        <input type="text" matInput formControlName="username" />
+        <mat-error *ngIf="formHelpers.isFormControlInvalid('username')">
+          {{ formHelpers.getErrorMessage("username") }}
         </mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
@@ -20,15 +27,15 @@
     <div class="buttons-container">
       <button
         mat-raised-button
-        [disabled]="loginForm.invalid"
-        (click)="login()"
         color="primary"
+        [disabled]="createAccountForm.invalid"
+        (click)="buildUser()"
         class="login-button"
       >
-        Login
+        Create Account
       </button>
       <p>OR</p>
-      <button routerLink="/create-account" mat-button>Create Account</button>
+      <button routerLink="/login" mat-button>Login</button>
     </div>
   </div>
 </div>

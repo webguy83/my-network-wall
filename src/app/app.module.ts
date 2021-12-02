@@ -12,9 +12,18 @@ import { MatInputModule } from '@angular/material/input';
 
 import { LoginComponent } from './pages/login/login.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CreateAccountComponent } from './pages/create-account/create-account.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [AppComponent, TopbarComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    TopbarComponent,
+    LoginComponent,
+    CreateAccountComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +32,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

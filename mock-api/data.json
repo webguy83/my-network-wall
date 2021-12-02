@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "email": "bunk@nin.com",
+      "username": "hothorse",
+      "password": "cracker69",
+      "id": 1
+    },
+    {
+      "email": "gggg@ggg.com",
+      "username": "bobcracker",
+      "password": "123456",
+      "id": 2
+    }
+  ],
+  "posts": []
+}
