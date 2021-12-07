@@ -1,11 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-interface IJSONData {
-  users: any[];
-  posts: any[];
-}
-
 interface ILoginData {
   email: string;
   password: string;
@@ -19,8 +14,10 @@ interface ILoginData {
 export class UserService {
   constructor(private http: HttpClient) {}
 
+  user: ILoginData | undefined;
+
   buildUser(data: any) {
-    return this.http.post<IJSONData>('http://localhost:3000/users', data);
+    return this.http.post<ILoginData>('http://localhost:3000/users', data);
   }
 
   getUser(email: string) {

@@ -11,6 +11,18 @@
       "username": "bobcracker",
       "password": "123456",
       "id": 2
+    },
+    {
+      "email": "bunk@crap.com",
+      "username": "goober",
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "email": "bunk@nin.com",
+      "username": "sdfsdfsf",
+      "password": "123456",
+      "id": 4
     }
   ],
   "posts": []

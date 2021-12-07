@@ -16,6 +16,7 @@ import { CreateAccountComponent } from './pages/create-account/create-account.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PostsComponent } from './pages/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TopbarComponent,
     LoginComponent,
     CreateAccountComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
