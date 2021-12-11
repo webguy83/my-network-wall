@@ -1,0 +1,39 @@
+.container {
+  max-width: 480px;
+  margin: 0px auto;
+  padding: 20px 0;
+}
+.post-area {
+  width: 100%;
+}
+
+.post-btn {
+  margin-bottom: 20px;
+}
+
+.like-logo {
+  color: red;
+}
+
+.like-container {
+  display: flex;
+  align-items: center;
+}
+
+.liked-msg {
+  margin: 0;
+  margin-left: 10px;
+}
+
+.comments {
+  margin-top: 30px;
+}
+
+.comment-creater {
+  font-weight: 800;
+}
+
+.comment-textarea {
+  width: 100%;
+  margin-top: 30px;
+}

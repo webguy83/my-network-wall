@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
         } else if (res[0].password === this.loginForm.value.password) {
           this.sb.open('Matched!', 'OK');
           this.userService.user = res[0];
+          localStorage.setItem('user', JSON.stringify(res[0]));
           this.router.navigate(['/posts']);
         } else {
           this.sb.open('Incorrect Password!', 'OK');

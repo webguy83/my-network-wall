@@ -14,7 +14,15 @@ interface ILoginData {
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  user: ILoginData | undefined;
+  _user: ILoginData | null = null;
+
+  get user() {
+    return this._user;
+  }
+
+  set user(user: ILoginData | null) {
+    this._user = user;
+  }
 
   buildUser(data: any) {
     return this.http.post<ILoginData>('http://localhost:3000/users', data);
