@@ -1,12 +1,30 @@
+<mat-progress-bar
+  *ngIf="percentage !== 0 && percentage !== 100"
+  mode="determinate"
+  value="{{ percentage }}"
+  color="warn"
+></mat-progress-bar>
 <div class="container">
   <mat-form-field appearance="fill" class="post-area">
     <mat-label>Say something...</mat-label>
     <textarea rows="7" matInput></textarea>
   </mat-form-field>
-  <button class="post-btn" mat-raised-button color="primary">Post</button>
+  <input
+    class="fileUploadBtn"
+    type="file"
+    accept="image/*"
+    (change)="onFileSelected($event)"
+  />
+  <button
+    class="post-btn"
+    (click)="uploadImage()"
+    mat-raised-button
+    color="primary"
+  >
+    Post
+  </button>
   <mat-card class="posts-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>Shiba Inu</mat-card-title>
       <mat-card-subtitle>Dog Breed</mat-card-subtitle>
     </mat-card-header>

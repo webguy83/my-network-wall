@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bunk-book": {
+      "hosting": {
+        "my-network-wall": [
+          "bunk-book"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bunk-book"
+  }
+}

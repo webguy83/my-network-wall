@@ -20,6 +20,11 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from 'src/environments/environment';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,10 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatMenuModule,
     MatCardModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

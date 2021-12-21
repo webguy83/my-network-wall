@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FileUpload } from 'src/app/models/file-upload';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,7 +10,15 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit {
-  constructor(private userService: UserService, private router: Router) {}
+  selectedFiles: FileList | null = null;
+  currentFileUpload: FileUpload | null = null;
+  percentage = 0;
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private fileUploadService: FileUploadService
+  ) {}
 
   ngOnInit(): void {
     if (!this.userService.user) {
@@ -17,6 +27,28 @@ export class PostsComponent implements OnInit {
         this.userService.user = JSON.parse(user);
       } else {
         this.router.navigate(['/login']);
+      }
+    }
+  }
+  onFileSelected(event: Event) {
+    this.selectedFiles = (event.target as HTMLInputElement).files;
+  }
+
+  uploadImage() {
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      this.selectedFiles = null;
+
+      if (file) {
+        this.currentFileUpload = new FileUpload(file);
+        this.fileUploadService
+          .uploadFileToStorage(this.currentFileUpload)
+          .subscribe({
+            next: (pct) => {
+              this.percentage = Math.round(pct ? pct : 0);
+            },
+            error: (error) => console.log(error),
+          });
       }
     }
   }
