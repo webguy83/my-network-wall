@@ -17,6 +17,7 @@
   />
   <button
     class="post-btn"
+    [disabled]="!selectedFiles"
     (click)="uploadImage()"
     mat-raised-button
     color="primary"

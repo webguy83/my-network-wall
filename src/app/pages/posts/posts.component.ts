@@ -31,7 +31,13 @@ export class PostsComponent implements OnInit {
     }
   }
   onFileSelected(event: Event) {
-    this.selectedFiles = (event.target as HTMLInputElement).files;
+    const files = (event.target as HTMLInputElement).files;
+
+    if (files && files.length > 0) {
+      this.selectedFiles = (event.target as HTMLInputElement).files;
+    } else {
+      this.selectedFiles = null;
+    }
   }
 
   uploadImage() {
