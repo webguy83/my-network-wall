@@ -6,12 +6,17 @@ import {
   AngularFireDatabase,
   AngularFireList,
 } from '@angular/fire/compat/database';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FileUploadService {
   private _basePath: string = '/images';
+  private _getImgURL$: Subject<string> = new Subject();
+  getUrl(): Observable<string> {
+    return this._getImgURL$.asObservable();
+  }
 
   constructor(
     private db: AngularFireDatabase,
@@ -32,13 +37,13 @@ export class FileUploadService {
             if (url) {
               fileUpload.url = url;
               fileUpload.name = fileUpload.file.name;
+              this._getImgURL$.next(url);
               this.saveFileData(fileUpload);
             }
           });
         })
       )
       .subscribe();
-
     return task.percentageChanges();
   }
 

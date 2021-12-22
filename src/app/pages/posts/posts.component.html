@@ -7,7 +7,7 @@
 <div class="container">
   <mat-form-field appearance="fill" class="post-area">
     <mat-label>Say something...</mat-label>
-    <textarea rows="7" matInput></textarea>
+    <textarea [(ngModel)]="text" rows="7" matInput></textarea>
   </mat-form-field>
   <input
     class="fileUploadBtn"
