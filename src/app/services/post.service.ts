@@ -11,4 +11,8 @@ export class PostService {
   savePost(post: IPost) {
     return this.http.post('http://localhost:3000/posts', post);
   }
+
+  getPosts() {
+    return this.http.get<IPost[]>('http://localhost:3000/posts');
+  }
 }

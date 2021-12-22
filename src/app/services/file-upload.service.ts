@@ -13,10 +13,8 @@ import { Observable, Subject } from 'rxjs';
 })
 export class FileUploadService {
   private _basePath: string = '/images';
-  private _getImgURL$: Subject<string> = new Subject();
-  getUrl(): Observable<string> {
-    return this._getImgURL$.asObservable();
-  }
+  private _imgUrlEmitter: Subject<string> = new Subject();
+  getImgURL$: Observable<string> = this._imgUrlEmitter.asObservable();
 
   constructor(
     private db: AngularFireDatabase,
@@ -37,7 +35,7 @@ export class FileUploadService {
             if (url) {
               fileUpload.url = url;
               fileUpload.name = fileUpload.file.name;
-              this._getImgURL$.next(url);
+              this._imgUrlEmitter.next(url);
               this.saveFileData(fileUpload);
             }
           });

@@ -24,7 +24,25 @@ export class PostsComponent implements OnInit {
     private fileUploadService: FileUploadService,
     private postService: PostService
   ) {
-    this.onUploadCompleted();
+    this.fileUploadService.getImgURL$.subscribe({
+      next: (imageURL) => {
+        if (this.userService.user) {
+          const post: IPost = {
+            imageURL,
+            text: this.text,
+            username: this.userService.user.username,
+            likes: [],
+            comments: [],
+          };
+          this.posts.push(post);
+          this.postService.savePost(post).subscribe({
+            next: (res) => {
+              console.log(res);
+            },
+          });
+        }
+      },
+    });
   }
 
   ngOnInit(): void {
@@ -36,6 +54,9 @@ export class PostsComponent implements OnInit {
         this.router.navigate(['/login']);
       }
     }
+    this.postService.getPosts().subscribe((posts) => {
+      this.posts = posts;
+    });
   }
   onFileSelected(event: Event) {
     const files = (event.target as HTMLInputElement).files;
@@ -68,28 +89,5 @@ export class PostsComponent implements OnInit {
         },
         error: (error) => console.log(error),
       });
-  }
-
-  private onUploadCompleted() {
-    this.fileUploadService.getUrl().subscribe({
-      next: (imageURL) => {
-        console.log(imageURL);
-        if (this.userService.user) {
-          const post: IPost = {
-            imageURL,
-            text: this.text,
-            username: this.userService.user.username,
-            likes: [],
-            comments: [],
-          };
-          this.posts.push(post);
-          this.postService.savePost(post).subscribe({
-            next: (res) => {
-              //console.log(res);
-            },
-          });
-        }
-      },
-    });
   }
 }

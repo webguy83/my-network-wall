@@ -24,31 +24,23 @@
   >
     Post
   </button>
-  <mat-card class="posts-card">
+  <mat-card class="posts-card" *ngFor="let post of posts.reverse()">
     <mat-card-header>
-      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-title>{{ post.username }}</mat-card-title>
       <mat-card-subtitle>Dog Breed</mat-card-subtitle>
     </mat-card-header>
-    <img
-      mat-card-image
-      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-      alt="Photo of a Shiba Inu"
-    />
+    <img mat-card-image [src]="post.imageURL" alt="Photo of a Shiba Inu" />
     <mat-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz
-        breeds of dog from Japan. A small, agile dog that copes very well with
-        mountainous terrain, the Shiba Inu was originally bred for hunting.
-      </p>
+      <p>{{ post.text }}</p>
       <div class="like-container">
         <span class="material-icons like-logo">favorite</span>
-        <p class="liked-msg">10 people liked it</p>
+        <p class="liked-msg">{{ post.likes.length }} people liked it</p>
       </div>
       <div class="comments">
         <h2 class="comments-title">Comments</h2>
-        <p>
-          <span class="comment-creater">The Rock: </span>This photo is kicking
-          ass. :P
+        <p *ngFor="let comment of post.comments">
+          <span class="comment-creater">{{ comment.username }}: </span
+          >{{ comment.comment }}
         </p>
         <mat-form-field class="comment-textarea" appearance="fill">
           <mat-label>Add a comment</mat-label>
