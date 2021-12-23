@@ -79,6 +79,34 @@ export class PostsComponent implements OnInit {
     }
   }
 
+  onLikeClick(post: IPost) {
+    if (this.userService.user) {
+      if (this.hasPostBeenLiked(post)) {
+        post.likes = post.likes.filter((user) => {
+          return user.id !== this.userService.user!.id;
+        });
+      } else {
+        post.likes.push(this.userService.user);
+      }
+
+      this.postService.likePost(post).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => console.log(err),
+      });
+    }
+  }
+
+  hasPostBeenLiked(post: IPost): boolean {
+    const userId = this.userService.user!.id;
+    const foundUser = post.likes.find((user) => user.id === userId);
+    if (foundUser) {
+      return true;
+    }
+    return false;
+  }
+
   private uploadToStorage(file: File) {
     this.currentFileUpload = new FileUpload(file);
     this.fileUploadService

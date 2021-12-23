@@ -34,7 +34,10 @@
       <p>{{ post.text }}</p>
       <div class="like-container">
         <span class="material-icons like-logo">favorite</span>
-        <p class="liked-msg">{{ post.likes.length }} people liked it</p>
+        <p class="liked-msg">
+          {{ post.likes.length }}
+          {{ post.likes.length === 1 ? "person" : "people" }} liked it.
+        </p>
       </div>
       <div class="comments">
         <h2 class="comments-title">Comments</h2>
@@ -46,6 +49,7 @@
           <mat-label>Add a comment</mat-label>
           <textarea
             matInput
+            rows="7"
             placeholder="Add a comment that works for you..."
           ></textarea>
         </mat-form-field>
@@ -53,8 +57,14 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
+      <button
+        mat-flat-button
+        color="warn"
+        (click)="onLikeClick(post)"
+        mat-button
+      >
+        {{ hasPostBeenLiked(post) ? "UNLIKE" : "LIKE" }}
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

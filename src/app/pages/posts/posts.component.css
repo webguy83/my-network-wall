@@ -41,3 +41,8 @@
 .mat-card {
   margin-bottom: 25px;
 }
+
+.mat-card > mat-card-actions {
+  margin-left: 0;
+  margin-bottom: 0;
+}

@@ -15,4 +15,8 @@ export class PostService {
   getPosts() {
     return this.http.get<IPost[]>('http://localhost:3000/posts');
   }
+
+  likePost(post: IPost) {
+    return this.http.put(`http://localhost:3000/posts/${post.id}`, post);
+  }
 }

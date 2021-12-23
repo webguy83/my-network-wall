@@ -41,40 +41,13 @@
       "username": "fuckthis",
       "password": "bunker",
       "id": 7
+    },
+    {
+      "email": "h@h.com",
+      "username": "oger",
+      "password": "111111",
+      "id": 8
     }
   ],
-  "posts": [
-    {
-      "imageURL": "https://firebasestorage.googleapis.com/v0/b/bunk-book.appspot.com/o/images%2F1640163290034?alt=media&token=5167582d-7e25-401f-b095-1d2948be9e8f",
-      "text": "fdsfsfsfsfsffddsf",
-      "username": "bobcracker",
-      "likes": [],
-      "comments": [],
-      "id": 1
-    },
-    {
-      "imageURL": "https://firebasestorage.googleapis.com/v0/b/bunk-book.appspot.com/o/images%2F1640163352452?alt=media&token=8c09b1fb-ba31-40c0-9546-52b3d2c026c8",
-      "text": "shithead",
-      "username": "bobcracker",
-      "likes": [],
-      "comments": [],
-      "id": 2
-    },
-    {
-      "imageURL": "https://firebasestorage.googleapis.com/v0/b/bunk-book.appspot.com/o/images%2F1640164223319?alt=media&token=2c072c12-ff6a-4023-b925-31736e45c6c9",
-      "text": "Turd Fatso",
-      "username": "bobcracker",
-      "likes": [],
-      "comments": [],
-      "id": 3
-    },
-    {
-      "imageURL": "https://firebasestorage.googleapis.com/v0/b/bunk-book.appspot.com/o/images%2F1640164277981?alt=media&token=8da0248d-523a-4069-b3ed-36d594a1a604",
-      "text": "nooooooooooooooooo",
-      "username": "bobcracker",
-      "likes": [],
-      "comments": [],
-      "id": 4
-    }
-  ]
+  "posts": []
 }
