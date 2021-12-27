@@ -1,9 +1,13 @@
 <mat-toolbar class="toolbar" color="primary">
   <span>Bunk Book</span>
-  <button mat-icon-button [matMenuTriggerFor]="appMenu">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-  <mat-menu #appMenu="matMenu">
-    <button mat-menu-item (click)="logout()">Logout</button>
-  </mat-menu>
+  <div *ngIf="userService.user">
+    <span class="welcome-user">Welcome, {{ userService.user.username }}!</span>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #appMenu>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+  <mat-icon *ngIf="!userService.user">account_circle</mat-icon>
 </mat-toolbar>

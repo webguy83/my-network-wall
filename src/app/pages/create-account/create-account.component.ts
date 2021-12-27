@@ -29,7 +29,6 @@ export class CreateAccountComponent implements OnInit {
   buildUser() {
     this.userService.buildUser(this.createAccountForm.value).subscribe({
       next: (res) => {
-        console.log(res);
         this.userService.user = res;
         this.router.navigate(['/posts']);
       },

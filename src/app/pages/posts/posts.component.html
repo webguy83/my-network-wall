@@ -5,66 +5,82 @@
   color="warn"
 ></mat-progress-bar>
 <div class="container">
-  <mat-form-field appearance="fill" class="post-area">
-    <mat-label>Say something...</mat-label>
-    <textarea [(ngModel)]="text" rows="7" matInput></textarea>
-  </mat-form-field>
-  <input
-    class="fileUploadBtn"
-    type="file"
-    accept="image/*"
-    (change)="onFileSelected($event)"
-  />
-  <button
-    class="post-btn"
-    [disabled]="!selectedFiles"
-    (click)="uploadImage()"
-    mat-raised-button
-    color="primary"
-  >
-    Post
-  </button>
-  <mat-card class="posts-card" *ngFor="let post of posts.reverse()">
-    <mat-card-header>
-      <mat-card-title>{{ post.username }}</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image [src]="post.imageURL" alt="Photo of a Shiba Inu" />
-    <mat-card-content>
-      <p>{{ post.text }}</p>
-      <div class="like-container">
-        <span class="material-icons like-logo">favorite</span>
-        <p class="liked-msg">
-          {{ post.likes.length }}
-          {{ post.likes.length === 1 ? "person" : "people" }} liked it.
+  <mat-spinner class="spinner" *ngIf="loading"></mat-spinner>
+  <div class="content" *ngIf="!loading">
+    <mat-form-field appearance="fill" class="post-area">
+      <mat-label>Say something...</mat-label>
+      <textarea [(ngModel)]="text" rows="7" matInput></textarea>
+    </mat-form-field>
+    <input
+      class="fileUploadBtn"
+      type="file"
+      accept="image/*"
+      (change)="onFileSelected($event)"
+    />
+    <button
+      class="post-btn"
+      [disabled]="!selectedFiles"
+      (click)="uploadImage()"
+      mat-raised-button
+      color="primary"
+    >
+      Post
+    </button>
+    <mat-card class="posts-card" *ngFor="let post of posts.reverse()">
+      <mat-card-header>
+        <mat-card-title>{{ post.username }}</mat-card-title>
+        <mat-card-subtitle>{{ post.createdAt }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="post.imageURL" alt="Photo of a Shiba Inu" />
+      <mat-card-content>
+        <p>{{ post.text }}</p>
+        <div class="like-container">
+          <span class="material-icons like-logo">favorite</span>
+          <p class="liked-msg">
+            {{ post.likes.length }}
+            {{ post.likes.length === 1 ? "person" : "people" }} liked it.
+          </p>
+        </div>
+        <p *ngIf="post.likes.length > 0" class="likedBy">
+          Liked By:
+          <span *ngFor="let user of post.likes; let isLast = last">
+            {{ user.username }}{{ isLast ? "" : "," }}
+          </span>
         </p>
-      </div>
-      <div class="comments">
-        <h2 class="comments-title">Comments</h2>
-        <p *ngFor="let comment of post.comments">
-          <span class="comment-creater">{{ comment.username }}: </span
-          >{{ comment.comment }}
-        </p>
-        <mat-form-field class="comment-textarea" appearance="fill">
-          <mat-label>Add a comment</mat-label>
-          <textarea
-            matInput
-            rows="7"
-            placeholder="Add a comment that works for you..."
-          ></textarea>
-        </mat-form-field>
-        <button mat-stroked-button>Comment</button>
-      </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button
-        mat-flat-button
-        color="warn"
-        (click)="onLikeClick(post)"
-        mat-button
-      >
-        {{ hasPostBeenLiked(post) ? "UNLIKE" : "LIKE" }}
-      </button>
-    </mat-card-actions>
-  </mat-card>
+        <div class="comments">
+          <h2 class="comments-title">Comments</h2>
+          <p *ngFor="let comment of post.comments">
+            <span class="comment-creater">{{ comment.username }}: </span
+            >{{ comment.value }}
+          </p>
+          <mat-form-field class="comment-textarea" appearance="fill">
+            <mat-label>Add a comment</mat-label>
+            <textarea
+              [(ngModel)]="post.commentTextArea"
+              matInput
+              rows="7"
+              placeholder="Add a comment that works for you..."
+            ></textarea>
+          </mat-form-field>
+          <button
+            [disabled]="!post.commentTextArea"
+            mat-stroked-button
+            (click)="onCommentClick(post)"
+          >
+            Comment
+          </button>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-flat-button
+          color="warn"
+          (click)="onLikeClick(post)"
+          mat-button
+        >
+          {{ hasPostBeenLiked(post) ? "UNLIKE" : "LIKE" }}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

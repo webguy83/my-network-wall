@@ -1,3 +1,7 @@
 .toolbar {
   justify-content: space-between;
 }
+
+.welcome-user {
+  font-size: 13px;
+}

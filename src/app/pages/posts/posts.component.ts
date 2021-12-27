@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { Router } from '@angular/router';
 import { IPost } from 'src/app/interfaces/post';
 import { FileUpload } from 'src/app/models/file-upload';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-posts',
@@ -17,27 +18,33 @@ export class PostsComponent implements OnInit {
   percentage = 0;
   text = '';
   posts: IPost[] = [];
+  loading = true;
 
   constructor(
     private userService: UserService,
     private router: Router,
     private fileUploadService: FileUploadService,
-    private postService: PostService
+    private postService: PostService,
+    @Inject(LOCALE_ID) private locale: string
   ) {
     this.fileUploadService.getImgURL$.subscribe({
       next: (imageURL) => {
         if (this.userService.user) {
           const post: IPost = {
+            id: Math.random(),
+            createdAt: formatDate(new Date(), 'dd-MM-yyyy', this.locale),
             imageURL,
             text: this.text,
             username: this.userService.user.username,
             likes: [],
             comments: [],
+            commentTextArea: '',
           };
           this.posts.push(post);
           this.postService.savePost(post).subscribe({
-            next: (res) => {
-              console.log(res);
+            next: () => {
+              this.loading = false;
+              this.text = '';
             },
           });
         }
@@ -55,9 +62,21 @@ export class PostsComponent implements OnInit {
       }
     }
     this.postService.getPosts().subscribe((posts) => {
+      this.loading = false;
       this.posts = posts;
     });
   }
+
+  onCommentClick(post: IPost) {
+    post.comments.push({
+      username: this.userService.user!.username,
+      value: post.commentTextArea,
+    });
+    post.commentTextArea = '';
+
+    this.postService.updatePost(post).subscribe();
+  }
+
   onFileSelected(event: Event) {
     const files = (event.target as HTMLInputElement).files;
 
@@ -74,6 +93,7 @@ export class PostsComponent implements OnInit {
       this.selectedFiles = null;
 
       if (file) {
+        this.loading = true;
         this.uploadToStorage(file);
       }
     }
@@ -86,13 +106,11 @@ export class PostsComponent implements OnInit {
           return user.id !== this.userService.user!.id;
         });
       } else {
-        post.likes.push(this.userService.user);
+        post.likes.push(this.userService!.user);
       }
 
-      this.postService.likePost(post).subscribe({
-        next: (res) => {
-          console.log(res);
-        },
+      this.postService.updatePost(post).subscribe({
+        next: (res) => {},
         error: (err) => console.log(err),
       });
     }

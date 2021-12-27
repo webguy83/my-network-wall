@@ -46,3 +46,18 @@
   margin-left: 0;
   margin-bottom: 0;
 }
+
+.spinner {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+}
+
+.likedBy {
+  margin-top: 15px;
+  font-weight: 800;
+}
+
+.likedBy > span {
+  font-weight: normal;
+}

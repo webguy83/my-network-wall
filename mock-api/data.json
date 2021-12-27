@@ -1,53 +1,118 @@
 {
   "users": [
     {
-      "email": "bunk@nin.com",
-      "username": "hothorse",
-      "password": "cracker69",
+      "email": "a@a.com",
+      "username": "bukweed",
+      "password": "111111",
       "id": 1
     },
     {
-      "email": "gggg@ggg.com",
-      "username": "bobcracker",
-      "password": "123456",
+      "email": "bob@sagat.com",
+      "username": "bobsagat69",
+      "password": "111111",
       "id": 2
     },
     {
-      "email": "bunk@crap.com",
-      "username": "goober",
-      "password": "123456",
+      "email": "gggg@ggg.com",
+      "username": "steveaus69",
+      "password": "1111111",
       "id": 3
-    },
-    {
-      "email": "bunk@nin.com",
-      "username": "sdfsdfsf",
-      "password": "123456",
-      "id": 4
-    },
-    {
-      "email": "bunk@nin.com",
-      "username": "gab",
-      "password": "123456",
-      "id": 5
-    },
-    {
-      "email": "a@a.com",
-      "username": "123456",
-      "password": "123456",
-      "id": 6
-    },
-    {
-      "email": "ggg@ggg.com",
-      "username": "fuckthis",
-      "password": "bunker",
-      "id": 7
-    },
-    {
-      "email": "h@h.com",
-      "username": "oger",
-      "password": "111111",
-      "id": 8
     }
   ],
-  "posts": []
+  "posts": [
+    {
+      "id": 0.6126978386727602,
+      "createdAt": "25-12-2021",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/bunk-book.appspot.com/o/images%2F1640498994943?alt=media&token=ce8f75c6-1070-4744-8047-62d7858a336c",
+      "text": "",
+      "username": "bobsagat69",
+      "likes": [
+        {
+          "email": "bob@sagat.com",
+          "username": "bobsagat69",
+          "password": "111111",
+          "id": 2
+        },
+        {
+          "email": "a@a.com",
+          "username": "bukweed",
+          "password": "111111",
+          "id": 1
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": 0.765775887271755,
+      "createdAt": "25-12-2021",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/bunk-book.appspot.com/o/images%2F1640498994943?alt=media&token=ce8f75c6-1070-4744-8047-62d7858a336c",
+      "text": "This is a hurrrrrmy",
+      "username": "bobsagat69",
+      "likes": [
+        {
+          "email": "bob@sagat.com",
+          "username": "bobsagat69",
+          "password": "111111",
+          "id": 2
+        },
+        {
+          "email": "a@a.com",
+          "username": "bukweed",
+          "password": "111111",
+          "id": 1
+        }
+      ],
+      "comments": [
+        {
+          "username": "bobsagat69",
+          "value": "jojo"
+        },
+        {
+          "username": "bobsagat69",
+          "value": "This is a bobbbbbb"
+        },
+        {
+          "username": "bobsagat69",
+          "value": "fdgdgdgdgdg"
+        },
+        {
+          "username": "steveaus69",
+          "value": "What an amazing shot."
+        }
+      ],
+      "commentTextArea": ""
+    },
+    {
+      "id": 0.9636013917853754,
+      "createdAt": "26-12-2021",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/bunk-book.appspot.com/o/images%2F1640551814780?alt=media&token=271f2dfc-52c1-4ab7-8dad-f358285fd703",
+      "text": "This is something very special. Please view!",
+      "username": "bukweed",
+      "likes": [],
+      "comments": [],
+      "commentTextArea": ""
+    },
+    {
+      "id": 0.014453898241868934,
+      "createdAt": "26-12-2021",
+      "imageURL": "https://firebasestorage.googleapis.com/v0/b/bunk-book.appspot.com/o/images%2F1640551882895?alt=media&token=8b9ac523-fde2-47b4-abb9-fe0d95d188b1",
+      "text": "somrthin is awdddd O hno",
+      "username": "bukweed",
+      "likes": [
+        {
+          "email": "a@a.com",
+          "username": "bukweed",
+          "password": "111111",
+          "id": 1
+        }
+      ],
+      "comments": [
+        {
+          "username": "bukweed",
+          "value": "ooooh Taiwan it is"
+        }
+      ],
+      "commentTextArea": ""
+    }
+  ]
 }
